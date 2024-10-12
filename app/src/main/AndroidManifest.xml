@@ -27,6 +27,20 @@
             android:label="InsertarDatosActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
         />
+
+        <activity
+            android:name="com.trespuntocerodigital.actividades.EquipoActivity"
+            android:label="EquipoActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
+        />
+        
+       
+        <activity
+            android:name="com.trespuntocerodigital.actividades.GaleriaActivity"
+            android:label="GaleriaActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
+        />
+
         
     </application>
 
