@@ -1,6 +1,5 @@
-package com.trespuntocerodigital.tresdigital;
+package com.trespuntocerodigital.digital;
 
-import android.os.Bundle;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +14,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.trespuntocerodigital.actividades.EquipoActivity;
+import com.trespuntocerodigital.actividades.GaleriaActivity;
 import com.trespuntocerodigital.contenido.AcercaDe;
 import com.trespuntocerodigital.contenido.Contacto;
 import com.trespuntocerodigital.contenido.Inicio;
@@ -24,27 +25,21 @@ import com.trespuntocerodigital.demo.InsertarDatosActivity;
 import com.trespuntocerodigital.diseno.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import com.microsoft.appcenter.AppCenter;
-import com.microsoft.appcenter.analytics.Analytics;
-import com.microsoft.appcenter.crashes.Crashes;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        AppCenter.start(getApplication(), "d472f8c2-2515-4f9a-adab-f55e98cde56d",
-                          Analytics.class, Crashes.class);
-        
 
         // Crear ConstraintLayout como el contenedor principal
         ConstraintLayout mainLayout = new ConstraintLayout(this);
@@ -52,12 +47,11 @@ public class MainActivity extends AppCompatActivity {
                 new ConstraintLayout.LayoutParams(
                         ConstraintLayout.LayoutParams.MATCH_PARENT,
                         ConstraintLayout.LayoutParams.MATCH_PARENT));
-
-        // Crear el Toolbar de manera programática
+               // Crear el Toolbar de manera programática
         Toolbar toolbar = new Toolbar(this);
         toolbar.setId(View.generateViewId());
         toolbar.setTitle("3.0 Digital");
-        toolbar.setBackgroundColor(Color.BLUE);
+        toolbar.setBackgroundColor(Color.parseColor("#FD41B7FF"));
         toolbar.setTitleTextColor(Color.WHITE);
 
         // Configurar el Toolbar como ActionBar
@@ -150,12 +144,18 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Servicios", Toast.LENGTH_SHORT).show();
                 return true;
             case 4:
+                Intent intent4 = new Intent(this, GaleriaActivity.class);
+                startActivity(intent4);
+
                 Toast.makeText(this, "Galeria", Toast.LENGTH_SHORT).show();
                 return true;
             case 5:
                 Toast.makeText(this, "Horarios de Atención", Toast.LENGTH_SHORT).show();
                 return true;
             case 6:
+                Intent intent5 = new Intent(this, EquipoActivity.class);
+                startActivity(intent5);
+
                 Toast.makeText(this, "Nuestro Equipo", Toast.LENGTH_SHORT).show();
                 return true;
             case 7:
@@ -165,8 +165,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Acerca de", Toast.LENGTH_SHORT).show();
                 return true;
             case 9:
-                Intent intent = new Intent(this, InsertarDatosActivity.class);
-                startActivity(intent);
+                Intent intent9 = new Intent(this, InsertarDatosActivity.class);
+                startActivity(intent9);
                 Toast.makeText(this, "Cargar Data ( Ojo Demo))", Toast.LENGTH_SHORT).show();
                 return true;
             default:
