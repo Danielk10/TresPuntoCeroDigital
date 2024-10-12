@@ -21,6 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+<activity
+            android:name="com.trespuntocerodigital.demo.InsertarDatosActivity"
+            android:label="InsertarDatosActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
+        />
+        
     </application>
 
 </manifest>
