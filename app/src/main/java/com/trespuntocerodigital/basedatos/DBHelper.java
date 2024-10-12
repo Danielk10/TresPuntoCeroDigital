@@ -31,6 +31,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String createTableAcercaDe =
                 "CREATE TABLE acerca_de ("
                         + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + "imagen TEXT, "
                         + "titulo TEXT, "
                         + "descripcion TEXT)";
         db.execSQL(createTableAcercaDe);
@@ -60,7 +61,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         + "imagen TEXT, "
                         + "nombre_servicio TEXT, "
                         + "descripcion_servicio TEXT, "
-                        + "descripcion_servicio REAL)";
+                        + "precio_servicio REAL)";
         db.execSQL(createTableServicios);
 
         // Tabla para productos

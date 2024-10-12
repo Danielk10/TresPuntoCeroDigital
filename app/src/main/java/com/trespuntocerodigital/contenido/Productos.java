@@ -56,7 +56,7 @@ public class Productos extends Fragment {
 
                 Bitmap bitmap = null;
                 // Crear un ImageView para la imagen
-                if (imagenProducto != null) {
+                if (imagenProducto != null && cursor.getCount() > 0) {
 
                     bitmap = BitmapFactory.decodeFile(imagenProducto);
                 }
@@ -157,7 +157,7 @@ public class Productos extends Fragment {
                 new ViewGroup.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-         consultarProductos();
+        consultarProductos();
 
         scrollView.addView(diseno);
 

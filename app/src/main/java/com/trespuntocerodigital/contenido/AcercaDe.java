@@ -53,7 +53,7 @@ public class AcercaDe extends Fragment {
                     bitmap = BitmapFactory.decodeFile(imagen);
                 }
 
-               crearUI(bitmap, titulo, descripcion);
+                crearUI(bitmap, titulo, descripcion);
             }
         }
         cursor.close();
@@ -136,7 +136,7 @@ public class AcercaDe extends Fragment {
                 new ViewGroup.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-         consultarAcercaDe();
+        consultarAcercaDe();
 
         scrollView.addView(diseno);
         return scrollView;
