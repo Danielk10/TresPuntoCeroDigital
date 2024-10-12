@@ -32,6 +32,11 @@ import android.view.Gravity;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        AppCenter.start(getApplication(), "d472f8c2-2515-4f9a-adab-f55e98cde56d",
+                                  Analytics.class, Crashes.class);
+                                  
 
         // Crear ConstraintLayout como el contenedor principal
         ConstraintLayout mainLayout = new ConstraintLayout(this);
