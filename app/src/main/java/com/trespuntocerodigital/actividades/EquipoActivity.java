@@ -1,4 +1,4 @@
-package com.diamon.actividades;
+package com.trespuntocerodigital.actividades;
 
 import android.os.Bundle;
 import android.widget.FrameLayout;

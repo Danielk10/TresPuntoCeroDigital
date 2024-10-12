@@ -1,10 +1,10 @@
-package com.diamon.actividades;
+package com.trespuntocerodigital.actividades;
 
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import com.diamon.trespuntocerodigital.Galeria;
+import com.trespuntocerodigital.contenido.Galeria;
 
 public class GaleriaActivity extends AppCompatActivity {
 
