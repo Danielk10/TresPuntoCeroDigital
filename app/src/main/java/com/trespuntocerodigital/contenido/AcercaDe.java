@@ -40,7 +40,7 @@ public class AcercaDe extends Fragment {
 
         Cursor cursor = db.query("acerca_de", null, null, null, null, null, null);
         if (cursor != null) {
-            while (cursor.moveToNext()) {
+            if (cursor.moveToFirst()) {
 
                 String imagen = cursor.getString(cursor.getColumnIndex("imagen"));
                 String titulo = cursor.getString(cursor.getColumnIndex("titulo"));
@@ -71,7 +71,7 @@ public class AcercaDe extends Fragment {
         ImageView logoImageView = new ImageView(contexto);
         logoImageView.setImageBitmap(imagen);
         LinearLayout.LayoutParams logoParams =
-                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 200);
+                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 300);
         logoParams.setMargins(0, 0, 0, 16);
         logoImageView.setLayoutParams(logoParams);
         logoImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);

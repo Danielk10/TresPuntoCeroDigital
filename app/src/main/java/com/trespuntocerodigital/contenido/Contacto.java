@@ -1,54 +1,95 @@
 package com.trespuntocerodigital.contenido;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.trespuntocerodigital.basedatos.DBHelper;
+
 public class Contacto extends Fragment {
 
     private String sectionName;
     private Context contexto;
+    private LinearLayout diseno;
+    private ScrollView scrollView;
 
     public Contacto(Context contexto, String sectionName) {
         this.contexto = contexto;
         this.sectionName = sectionName;
     }
 
+    private void consultarContacto() {
+        DBHelper dbHelper = new DBHelper(contexto);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        Cursor cursor = db.query("contacto", null, null, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            String telefono = cursor.getString(cursor.getColumnIndex("telefono"));
+            String correo = cursor.getString(cursor.getColumnIndex("correo"));
+            String direccion = cursor.getString(cursor.getColumnIndex("direccion"));
+
+            crearUIContacto(telefono, correo, direccion);
+        }
+
+        cursor.close();
+        db.close();
+    }
+
+    private void crearUIContacto(String telefono, String correo, String direccion) {
+        // Teléfono
+        TextView telefonoTextView = new TextView(contexto);
+        telefonoTextView.setText("Teléfono: " + telefono);
+        telefonoTextView.setTextSize(18);
+
+        // Correo
+        TextView correoTextView = new TextView(contexto);
+        correoTextView.setText("Correo: " + correo);
+        correoTextView.setTextSize(18);
+
+        // Dirección
+        TextView direccionTextView = new TextView(contexto);
+        direccionTextView.setText("Dirección: " + direccion);
+        direccionTextView.setTextSize(18);
+
+        // Agregar las vistas al diseño principal
+        diseno.addView(telefonoTextView);
+        diseno.addView(correoTextView);
+        diseno.addView(direccionTextView);
+    }
+
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Crear LinearLayout de manera programática
-        LinearLayout layout = new LinearLayout(contexto);
-        layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
-        ));
-        layout.setBackgroundColor(0xFFFFA5A5); // Color de fondo #FFA5A5
+    public View onCreateView(
+            @NonNull LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
+        scrollView = new ScrollView(contexto);
+        scrollView.setLayoutParams(
+                new ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
-        // Crear el botón de manera programática
-        Button button = new Button(contexto);
-        button.setText("Click here");
-        button.setTextSize(24);
+        diseno = new LinearLayout(contexto);
+        diseno.setOrientation(LinearLayout.VERTICAL);
+        diseno.setLayoutParams(
+                new ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        diseno.setPadding(16, 16, 16, 16);
 
-        // Añadir el botón al layout
-        LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        buttonParams.setMargins(32, 32, 32, 32); // Margen de 32px alrededor del botón
-        button.setLayoutParams(buttonParams);
+        consultarContacto();
 
-        layout.addView(button);
-
-        return layout;
+        scrollView.addView(diseno);
+        return scrollView;
     }
 }

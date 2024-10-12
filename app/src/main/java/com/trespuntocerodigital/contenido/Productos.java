@@ -97,7 +97,6 @@ public class Productos extends Fragment {
         imageView.setLayoutParams(imageParams);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setImageBitmap(imagenProducto);
-        imageView.setAdjustViewBounds(true);
 
         // Crear TextView para el nombre del servicio
         TextView nameTextView = new TextView(contexto);
