@@ -22,7 +22,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.diamon.basedatos.DBHelper;
+import com.trespuntocerodigital.basedatos.DBHelper;
 
 import java.io.File;
 import java.io.FileOutputStream;

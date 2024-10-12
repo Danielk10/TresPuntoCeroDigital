@@ -20,8 +20,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.diamon.basedatos.DBHelper;
-import com.diamon.servidor.ImageDownloaderTask;
+import com.trespuntocerodigital.basedatos.DBHelper;
+import com.trespuntocerodigital.servidor.ImageDownloaderTask;
 
 import java.util.ArrayList;
 import java.util.List;
