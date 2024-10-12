@@ -70,7 +70,6 @@ public class AcercaDe extends Fragment {
         // Logo de la empresa (opcional)
         ImageView logoImageView = new ImageView(contexto);
         logoImageView.setImageBitmap(imagen);
-        logoImageView.setAdjustViewBounds(true);
         LinearLayout.LayoutParams logoParams =
                 new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 200);
         logoParams.setMargins(0, 0, 0, 16);
