@@ -15,13 +15,13 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.diamon.contenido.AcercaDe;
-import com.diamon.contenido.Contacto;
-import com.diamon.contenido.Inicio;
-import com.diamon.contenido.Productos;
-import com.diamon.contenido.Servicios;
-import com.diamon.demo.InsertarDatosActivity;
-import com.diamon.diseno.SectionsPagerAdapter;
+import com.trespuntocerodigital.contenido.AcercaDe;
+import com.trespuntocerodigital.contenido.Contacto;
+import com.trespuntocerodigital.contenido.Inicio;
+import com.trespuntocerodigital.contenido.Productos;
+import com.trespuntocerodigital.contenido.Servicios;
+import com.trespuntocerodigital.demo.InsertarDatosActivity;
+import com.trespuntocerodigital.diseno.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
