@@ -1,4 +1,4 @@
-package com.trespuntocerodigital.digital;
+package com.trespuntocerodigital.tresdigital;
 
 import android.content.Intent;
 import android.graphics.Color;
