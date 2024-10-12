@@ -525,7 +525,7 @@ public class InsertarDatosActivity extends AppCompatActivity {
         values.put("imagen", imagenUri.getPath());
         values.put("nombre_servicio", nombre);
         values.put("descripcion_servicio", descripcion);
-        values.put("descripcion_servicio", Double.parseDouble(precio));
+        values.put("precio_servicio", Double.parseDouble(precio));
 
         long newRowId = db.insert("servicios", null, values);
         db.close();
