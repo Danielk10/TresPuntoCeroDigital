@@ -28,6 +28,10 @@ import com.trespuntocerodigital.notificaciones.NotificationUtils;
 import com.trespuntocerodigital.utilidades.Recurso;
 import com.google.android.material.tabs.TabLayout;
 
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
+
 import java.util.ArrayList;
 import java.util.List;
 
