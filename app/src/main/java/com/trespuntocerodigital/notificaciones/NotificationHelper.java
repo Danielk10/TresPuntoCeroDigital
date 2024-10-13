@@ -8,7 +8,7 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 
 import com.trespuntocerodigital.digital.MainActivity;
-import com.trespuntocerodigital.digital.R;
+import com.trespuntocerodigital.tresdigital.R;
 
 public class NotificationHelper {
 
