@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import com.trespuntocerodigital.contenido.Equipo;
+import com.diamon.contenido.Equipo;
 
 public class EquipoActivity extends AppCompatActivity {
 
