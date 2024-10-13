@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         AppCenter.start(getApplication(), "d472f8c2-2515-4f9a-adab-f55e98cde56d",
                                   Analytics.class, Crashes.class);
                                   
-recurso = new Recurso(this);
+        recurso = new Recurso(this);
 
         cargarRecursos();
 
