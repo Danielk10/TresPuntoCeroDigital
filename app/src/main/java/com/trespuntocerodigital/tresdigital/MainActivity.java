@@ -23,24 +23,17 @@ import com.trespuntocerodigital.contenido.Productos;
 import com.trespuntocerodigital.contenido.Servicios;
 import com.trespuntocerodigital.demo.InsertarDatosActivity;
 import com.trespuntocerodigital.diseno.SectionsPagerAdapter;
+import com.trespuntocerodigital.notificaciones.NotificationScheduler;
+import com.trespuntocerodigital.notificaciones.NotificationUtils;
+import com.trespuntocerodigital.utilidades.Recurso;
 import com.google.android.material.tabs.TabLayout;
-
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.microsoft.appcenter.AppCenter;
-import com.microsoft.appcenter.analytics.Analytics;
-import com.microsoft.appcenter.crashes.Crashes;
-
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+  
+  public static Recurso recurso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +42,17 @@ public class MainActivity extends AppCompatActivity {
         AppCenter.start(getApplication(), "d472f8c2-2515-4f9a-adab-f55e98cde56d",
                                   Analytics.class, Crashes.class);
                                   
+recurso = new Recurso(this);
+
+        cargarRecursos();
+
+        // Crear el canal de notificaciones al iniciar la app
+        NotificationUtils.createNotificationChannel(this);
+
+        // Programar la notificación de promociones periódicas
+        NotificationScheduler.programarNotificacion(this);
+
+        // Continúa con el resto de tu lógica
 
         // Crear ConstraintLayout como el contenedor principal
         ConstraintLayout mainLayout = new ConstraintLayout(this);
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 new ConstraintLayout.LayoutParams(
                         ConstraintLayout.LayoutParams.MATCH_PARENT,
                         ConstraintLayout.LayoutParams.MATCH_PARENT));
-               // Crear el Toolbar de manera programática
+        // Crear el Toolbar de manera programática
         Toolbar toolbar = new Toolbar(this);
         toolbar.setId(View.generateViewId());
         toolbar.setTitle("3.0 Digital");
@@ -192,4 +196,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         return true;
     }
+
+    private void cargarRecursos() {}
 }
