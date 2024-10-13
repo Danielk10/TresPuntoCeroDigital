@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.trespuntocerodigital.tresdigital.R;
+import com.trespuntocerodigital.digital.R;
 
 public class Inicio extends Fragment {
 
