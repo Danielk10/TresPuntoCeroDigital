@@ -30,29 +30,29 @@
         
  
  <activity
-            android:name="com.diamon.demo.InsertarDatosActivity"
+            android:name="com.trespuntocerodigital.demo.InsertarDatosActivity"
             android:label="InsertarDatosActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name="com.diamon.actividades.EquipoActivity"
+            android:name="com.trespuntocerodigital.actividades.EquipoActivity"
             android:label="EquipoActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name="com.diamon.actividades.GaleriaActivity"
+            android:name="com.trespuntocerodigital.actividades.GaleriaActivity"
             android:label="GaleriaActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <receiver
-            android:name="com.diamon.notificaciones.NotificationReceiver"
+            android:name="com.trespuntocerodigital.notificaciones.NotificationReceiver"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.diamon.notificaciones.PROMOTION_NOTIFICATION" />
+                <action android:name="com.trespuntocerodigital.notificaciones.PROMOTION_NOTIFICATION" />
             </intent-filter>
         </receiver>
 
