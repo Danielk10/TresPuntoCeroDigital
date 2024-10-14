@@ -1,4 +1,4 @@
-package com.diamon.contenido;
+package com.trespuntocerodigital.contenido;
 
 import android.content.Context;
 import android.database.Cursor;
