@@ -29,7 +29,7 @@ public class NotificationHelper {
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context, NotificationUtils.CHANNEL_ID)
                         .setSmallIcon(
-                                R.mipmap.logo) // Cambia este ícono según sea
+                                R.mipmap.ic_launcher) // Cambia este ícono según sea
                         // necesario
                         .setLargeIcon(
                                 new Textura2D(
@@ -75,7 +75,7 @@ public class NotificationHelper {
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context, NotificationUtils.CHANNEL_ID)
-                .setSmallIcon( R.mipmap.logo)
+                .setSmallIcon( R.mipmap.ic_launcher)
                         .setLargeIcon(
                                 new Textura2D(
                                                 MainActivity.recurso

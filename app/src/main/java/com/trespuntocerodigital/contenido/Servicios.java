@@ -81,7 +81,7 @@ public class Servicios extends Fragment {
         // Imagen del servicio
         ImageView imagenView = new ImageView(contexto);
 
-        imagenView.setImageBitmap(new Textura2D(imagen, 640, 30).getBipmap());
+        imagenView.setImageBitmap(new Textura2D(imagen, 640, 300).getBipmap());
 
         LinearLayout.LayoutParams imagenParams =
                 new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 300);
