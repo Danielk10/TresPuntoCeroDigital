@@ -75,10 +75,10 @@ public class Inicio extends Fragment {
     private void agregarBannerPrincipal() {
         ImageView bannerPrincipal = new ImageView(contexto);
         
-       bannerPrincipal.setImageBitmap(new Textura2D(MainActivity.recurso.cargarTextura("imagen2.jpg").getBipmap(), 640, 600).getBipmap());
+       bannerPrincipal.setImageBitmap(new Textura2D(MainActivity.recurso.cargarTextura("imagen2.jpg").getBipmap(), 640, 400).getBipmap());
         
         bannerPrincipal.setLayoutParams(
-                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 600));
+                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 400));
         bannerPrincipal.setScaleType(ImageView.ScaleType.CENTER_CROP);
         diseno.addView(bannerPrincipal);
     }
@@ -111,9 +111,9 @@ public class Inicio extends Fragment {
 
     private void agregarImagenPublicitaria(Bitmap imagen) {
         ImageView publicidad = new ImageView(contexto);
-        publicidad.setImageBitmap(new Textura2D(imagen, 640, 300).getBipmap());
+        publicidad.setImageBitmap(new Textura2D(imagen, 640, 600).getBipmap());
         publicidad.setLayoutParams(
-                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 300));
+                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 600));
         publicidad.setPadding(0, 16, 0, 16);
         publicidad.setScaleType(ImageView.ScaleType.CENTER_CROP);
         diseno.addView(publicidad);
