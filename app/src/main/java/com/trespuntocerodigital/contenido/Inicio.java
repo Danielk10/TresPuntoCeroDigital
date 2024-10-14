@@ -63,10 +63,10 @@ public class Inicio extends Fragment {
         agregarBannerPrincipal();
         agregarPromocion(
                 "¡Promoción Especial!", "Obtén un 30% de descuento en tu primer servicio.");
-        agregarImagenPublicitaria(MainActivity.recurso.cargarTextura("logo.jpg").getBipmap());
+        agregarImagenPublicitaria(MainActivity.recurso.cargarTextura("imagen1.jpg").getBipmap());
         agregarTextoInformativo(
                 "Bienvenidos a 3.0 Digital",
-                "Somos una empresa líder en soluciones digitales. Conéctate al futuro con nuestros servicios innovadores.");
+                "Somos una empresa líder en soluciones digitales. Conéctate al futuro con nuestros servicios innovadores.  📞 ¿Tienes alguna pregunta o necesitas más información? ¡No dudes en contactarnos al 0424-4655356 o envíanos un mensaje directo aquí en nuestras redes sociales! Estaremos encantados de ayudarte en todo lo que necesites.");
 
         scrollView.addView(diseno);
         return scrollView;
@@ -75,7 +75,7 @@ public class Inicio extends Fragment {
     private void agregarBannerPrincipal() {
         ImageView bannerPrincipal = new ImageView(contexto);
         
-       bannerPrincipal.setImageBitmap(new Textura2D(MainActivity.recurso.cargarTextura("logo.jpg").getBipmap(), 640, 400).getBipmap());
+       bannerPrincipal.setImageBitmap(new Textura2D(MainActivity.recurso.cargarTextura("imagen2.jpg").getBipmap(), 640, 400).getBipmap());
         
         bannerPrincipal.setLayoutParams(
                 new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 400));
