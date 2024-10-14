@@ -84,7 +84,7 @@ public class Contacto extends Fragment {
         ImageView logoImageView = new ImageView(contexto);
 
         logoImageView.setImageBitmap(
-                new Textura2D(MainActivity.recurso.cargarTextura("logo.jpg").getBipmap(), 300, 300)
+                new Textura2D(MainActivity.recurso.cargarTextura("ic_launcher.png").getBipmap(), 300, 300)
                         .getBipmap());
 
         LinearLayout.LayoutParams logoParams =
