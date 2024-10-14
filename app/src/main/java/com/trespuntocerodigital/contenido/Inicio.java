@@ -75,7 +75,7 @@ public class Inicio extends Fragment {
     private void agregarBannerPrincipal() {
         ImageView bannerPrincipal = new ImageView(contexto);
         
-       bannerPrincipal.setImageBitmap(new Textura2D(MainActivity.recurso.cargarTextura("imagen2.jpg").getBipmap(), 640, 400).getBipmap());
+       bannerPrincipal.setImageBitmap(new Textura2D(MainActivity.recurso.cargarTextura("imagen2.jpg").getBipmap(), 640, 600).getBipmap());
         
         bannerPrincipal.setLayoutParams(
                 new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 600));
