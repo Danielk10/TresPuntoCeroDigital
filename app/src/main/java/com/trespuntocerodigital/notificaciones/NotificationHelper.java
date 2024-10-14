@@ -46,7 +46,7 @@ public class NotificationHelper {
                                         .bigPicture(
                                                 new Textura2D(
                                                                 MainActivity.recurso
-                                                                        .cargarTextura("logo.jpg")
+                                                                        .cargarTextura("imagen3.jpg")
                                                                         .getBipmap(),
                                                                 300,
                                                                 250)
@@ -90,7 +90,7 @@ public class NotificationHelper {
                                         .bigPicture(
                                                 new Textura2D(
                                                                 MainActivity.recurso
-                                                                        .cargarTextura("logo.jpg")
+                                                                        .cargarTextura("imagen3.jpg")
                                                                         .getBipmap(),
                                                                 300,
                                                                 250)
