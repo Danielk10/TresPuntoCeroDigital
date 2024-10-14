@@ -78,7 +78,7 @@ public class Inicio extends Fragment {
        bannerPrincipal.setImageBitmap(new Textura2D(MainActivity.recurso.cargarTextura("imagen2.jpg").getBipmap(), 640, 400).getBipmap());
         
         bannerPrincipal.setLayoutParams(
-                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 400));
+                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 600));
         bannerPrincipal.setScaleType(ImageView.ScaleType.CENTER_CROP);
         diseno.addView(bannerPrincipal);
     }
