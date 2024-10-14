@@ -34,7 +34,7 @@ public class NotificationHelper {
                         .setLargeIcon(
                                 new Textura2D(
                                                 MainActivity.recurso
-                                                        .cargarTextura("logo.jpg")
+                                                        .cargarTextura("ic_launcher.png")
                                                         .getBipmap(),
                                                 150,
                                                 100)
@@ -78,7 +78,7 @@ public class NotificationHelper {
                         .setLargeIcon(
                                 new Textura2D(
                                                 MainActivity.recurso
-                                                        .cargarTextura("logo.jpg")
+                                                        .cargarTextura("ic_launcher.png")
                                                         .getBipmap(),
                                                 150,
                                                 100)
