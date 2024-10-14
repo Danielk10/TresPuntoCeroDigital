@@ -64,11 +64,14 @@ public class MainActivity extends AppCompatActivity {
                 new ConstraintLayout.LayoutParams(
                         ConstraintLayout.LayoutParams.MATCH_PARENT,
                         ConstraintLayout.LayoutParams.MATCH_PARENT));
-        // Crear el Toolbar de manera programática
+                        
+                        
+ // Crear el Toolbar de manera programática
         Toolbar toolbar = new Toolbar(this);
         toolbar.setId(View.generateViewId());
         toolbar.setTitle("3.0 Digital");
-        toolbar.setBackgroundColor(Color.parseColor("#FD41B7FF"));
+        toolbar.setBackgroundColor(Color.parseColor("#003366")); // Fondo gris claro
+        toolbar.setElevation(8);
         toolbar.setTitleTextColor(Color.WHITE);
 
         // Configurar el Toolbar como ActionBar
