@@ -106,6 +106,18 @@ public class MainActivity extends AppCompatActivity {
         viewPagerParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
         viewPagerParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
         viewPagerParams.height = 0; // Asigna el peso con constraints
+        // Crear un GradientDrawable con degradado de azul
+                GradientDrawable gradientDrawable =
+                        new GradientDrawable(
+                                GradientDrawable.Orientation.TOP_BOTTOM,
+                                new int[] {
+                                    Color.parseColor("#1E88E5"), Color.parseColor("#42A5F5")
+                                }); // Degradado azul
+                gradientDrawable.setCornerRadius(0f); // Sin bordes redondeados
+        
+                // Asignar el fondo al ViewPager
+                viewPager.setBackground(gradientDrawable);
+                
         mainLayout.addView(viewPager, viewPagerParams);
 
         // Crear lista de fragmentos para cada sección
