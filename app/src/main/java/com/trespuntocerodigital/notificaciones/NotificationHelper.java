@@ -9,6 +9,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.trespuntocerodigital.tresdigital.MainActivity;
 import com.trespuntocerodigital.tresdigital.R;
+import com.trespuntocerodigital.graficos.Textura2D;
 
 public class NotificationHelper {
 
@@ -23,45 +24,32 @@ public class NotificationHelper {
                         0,
                         intent,
                         PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-        /*
-                // Crear RemoteViews programáticamente
-                RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), 0);
-                // Configurar y añadir el ImageView
-                int imageViewId = View.generateViewId();
-                notificationLayout.setImageViewBitmap(
-                        imageViewId, MainActivity.recurso.cargarTextura("logo.jpg").getBipmap());
 
-                // Configurar y añadir el TextView para el título
-                int titleTextViewId = View.generateViewId();
-                notificationLayout.setTextViewText(titleTextViewId, "¡Promoción Especial!");
-                notificationLayout.setTextColor(titleTextViewId, Color.BLACK);
-                notificationLayout.setTextViewTextSize(titleTextViewId, 0, 18);
-
-                // Configurar y añadir el TextView para el mensaje
-                int messageTextViewId = View.generateViewId();
-                notificationLayout.setTextViewText(
-                        messageTextViewId, "No te pierdas nuestra última oferta.");
-                notificationLayout.setTextColor(messageTextViewId, Color.GRAY);
-                notificationLayout.setTextViewTextSize(messageTextViewId, 0, 14);
-        */
         // Crear la notificación
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context, NotificationUtils.CHANNEL_ID)
-                        .setSmallIcon(R.mipmap.ic_launcher) // Cambia este ícono según sea
+                        .setSmallIcon(
+                                R.drawable.ic_launcher_foreground) // Cambia este ícono según sea
                         // necesario
-                        .setLargeIcon(MainActivity.recurso.cargarTextura("logo.jpg").getBipmap())
-                        .setContentTitle(titulo)
-                        .setContentText(mensaje)
-                        /*  .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
-                                                .setCustomContentView(notificationLayout)
-                                                .setCustomBigContentView(
-                                                        notificationLayout) // Muestra el diseño personalizado en modo
-                                                // expandido
-                        */ .setStyle(
-                                new NotificationCompat.BigPictureStyle()
-                                        .bigPicture(
+                        .setLargeIcon(
+                                new Textura2D(
                                                 MainActivity.recurso
                                                         .cargarTextura("logo.jpg")
+                                                        .getBipmap(),
+                                                150,
+                                                100)
+                                        .getBipmap())
+                        .setContentTitle(titulo)
+                        .setContentText(mensaje)
+                        .setStyle(
+                                new NotificationCompat.BigPictureStyle()
+                                        .bigPicture(
+                                                new Textura2D(
+                                                                MainActivity.recurso
+                                                                        .cargarTextura("logo.jpg")
+                                                                        .getBipmap(),
+                                                                300,
+                                                                250)
                                                         .getBipmap()))
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setContentIntent(pendingIntent)
@@ -87,14 +75,25 @@ public class NotificationHelper {
 
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context, NotificationUtils.CHANNEL_ID)
-                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setLargeIcon(
+                                new Textura2D(
+                                                MainActivity.recurso
+                                                        .cargarTextura("logo.jpg")
+                                                        .getBipmap(),
+                                                150,
+                                                100)
+                                        .getBipmap())
                         .setContentTitle(titulo)
                         .setContentText(mensaje)
                         .setStyle(
                                 new NotificationCompat.BigPictureStyle()
                                         .bigPicture(
-                                                MainActivity.recurso
-                                                        .cargarTextura("logo.jpg")
+                                                new Textura2D(
+                                                                MainActivity.recurso
+                                                                        .cargarTextura("logo.jpg")
+                                                                        .getBipmap(),
+                                                                300,
+                                                                250)
                                                         .getBipmap()))
                         .setPriority(NotificationCompat.PRIORITY_HIGH)
                         .setContentIntent(pendingIntent)
