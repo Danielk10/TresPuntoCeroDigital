@@ -1,11 +1,15 @@
 package com.trespuntocerodigital.contenido;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.trespuntocerodigital.basedatos.DBHelper;
-import com.trespuntocerodigital.servidor.ImageDownloaderTask;
+import com.trespuntocerodigital.graficos.Textura2D;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,56 +88,94 @@ public class Productos extends Fragment {
             String descripcionProducto,
             String precioProducto) {
 
+        // Estilo de la tarjeta (LinearLayout)
         LinearLayout serviceLayout = new LinearLayout(contexto);
         serviceLayout.setOrientation(LinearLayout.VERTICAL);
-        serviceLayout.setPadding(16, 16, 16, 16);
-        serviceLayout.setBackgroundColor(Color.parseColor("#f0f0f0"));
-        serviceLayout.setElevation(4); // Añadir sombra
+        serviceLayout.setPadding(24, 24, 24, 24);
 
-        // Crear el ImageView
+        // Crear background con bordes redondeados programáticamente
+        GradientDrawable backgroundDrawable = new GradientDrawable();
+        backgroundDrawable.setColor(Color.parseColor("#1E1E2C")); // Color de fondo de la tarjeta
+        backgroundDrawable.setCornerRadius(30f); // Bordes redondeados
+        serviceLayout.setBackground(backgroundDrawable);
+
+        // Agregar sombras en API 21 o superior (minSdkVersion >= 21)
+        serviceLayout.setElevation(8);
+
+        // LayoutParams con márgenes
+        LinearLayout.LayoutParams layoutParams =
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(16, 16, 16, 16);
+        serviceLayout.setLayoutParams(layoutParams);
+
+        // Imagen del producto
         ImageView imageView = new ImageView(contexto);
         LinearLayout.LayoutParams imageParams =
-                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 400);
+                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 500);
         imageView.setLayoutParams(imageParams);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageBitmap(imagenProducto);
+        imageView.setImageBitmap(new Textura2D(imagenProducto, 640, 500).getBipmap());
 
-        // Crear TextView para el nombre del servicio
+        // Nombre del producto (TextView)
         TextView nameTextView = new TextView(contexto);
-        nameTextView.setLayoutParams(
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
         nameTextView.setText(nombreProducto);
-        nameTextView.setTextSize(20);
-        nameTextView.setTextColor(Color.BLACK);
+        nameTextView.setTextSize(24);
+        nameTextView.setTextColor(Color.WHITE);
+        nameTextView.setTypeface(null, Typeface.BOLD);
+        nameTextView.setPadding(0, 16, 0, 8); // Espaciado superior
 
-        // Crear TextView para la descripción del servicio
+        // Descripción del producto (TextView)
         TextView descriptionTextView = new TextView(contexto);
-        descriptionTextView.setLayoutParams(
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
         descriptionTextView.setText(descripcionProducto);
         descriptionTextView.setTextSize(16);
-        descriptionTextView.setTextColor(Color.DKGRAY);
+        descriptionTextView.setTextColor(Color.LTGRAY);
+        descriptionTextView.setPadding(0, 8, 0, 8); // Espaciado
 
-        // Crear TextView para el precio del servicio
+        // Precio del producto (TextView)
         TextView priceTextView = new TextView(contexto);
-        priceTextView.setLayoutParams(
-                new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
         priceTextView.setText("Precio: $" + precioProducto);
         priceTextView.setTextSize(18);
-        priceTextView.setTextColor(Color.parseColor("#4CAF50"));
+        priceTextView.setTextColor(Color.parseColor("#4CAF50")); // Color verde
+        priceTextView.setTypeface(null, Typeface.BOLD);
+        priceTextView.setPadding(0, 8, 0, 0); // Espaciado inferior
 
-        // Agregar las vistas al layout
+        Button whatsappButton = new Button(contexto);
+        whatsappButton.setText("Contactar por WhatsApp");
+        whatsappButton.setTextColor(Color.WHITE);
+        whatsappButton.setBackgroundColor(Color.parseColor("#25D366")); // Verde típico de WhatsApp
+        whatsappButton.setPadding(16, 8, 16, 8);
+        whatsappButton.setTypeface(null, Typeface.BOLD);
+        whatsappButton.setAllCaps(false); // Texto en minúsculas
+
+        LinearLayout.LayoutParams buttonParams =
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT);
+        buttonParams.setMargins(0, 16, 0, 0); // Margen superior al botón
+        whatsappButton.setLayoutParams(buttonParams);
+
+        whatsappButton.setOnClickListener(
+                v -> {
+                    String numeroTelefono =
+                            "+58 424-4655356"; // Reemplaza con el número de teléfono de la empresa
+                    String mensaje = "Hola, estoy interesado en obtener más información.";
+                    String url = "https://wa.me/" + numeroTelefono + "?text=" + Uri.encode(mensaje);
+
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    contexto.startActivity(intent);
+                });
+
+        // Agregar las vistas al layout de la tarjeta
         serviceLayout.addView(imageView);
         serviceLayout.addView(nameTextView);
         serviceLayout.addView(descriptionTextView);
         serviceLayout.addView(priceTextView);
+        serviceLayout.addView(whatsappButton);
 
+        // Agregar la tarjeta al diseño principal
         diseno.addView(serviceLayout);
     }
 

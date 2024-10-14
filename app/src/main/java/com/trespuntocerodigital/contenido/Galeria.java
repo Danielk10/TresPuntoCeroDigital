@@ -3,7 +3,10 @@ package com.trespuntocerodigital.contenido;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.trespuntocerodigital.basedatos.DBHelper;
+import com.trespuntocerodigital.graficos.Textura2D;
 
 public class Galeria extends Fragment {
 
@@ -28,9 +32,12 @@ public class Galeria extends Fragment {
     private LinearLayout diseno;
     private ScrollView scrollView;
 
+    private int numerReproducion;
+
     public Galeria(Context contexto, String sectionName) {
         this.contexto = contexto;
         this.sectionName = sectionName;
+        numerReproducion = 0;
     }
 
     @Nullable
@@ -47,7 +54,9 @@ public class Galeria extends Fragment {
 
         diseno = new LinearLayout(contexto);
         diseno.setOrientation(LinearLayout.VERTICAL);
-        diseno.setPadding(16, 16, 16, 16);
+        diseno.setLayoutParams(
+                new ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         diseno.setBackgroundColor(Color.parseColor("#F0F0F0")); // Fondo claro para el fragmento
 
         // Crear y añadir el título estilizado para el fragmento
@@ -100,9 +109,13 @@ public class Galeria extends Fragment {
         ImageView imagenView = new ImageView(contexto);
         // Aquí cargarás la imagen desde el path, asumiendo que tienes una función de carga de
         // imágenes.
-        imagenView.setImageURI(Uri.parse(imagePath));
+
+        Textura2D textuta = new Textura2D(BitmapFactory.decodeFile(imagePath), 640, 784);
+
+        imagenView.setImageBitmap(textuta.getBipmap());
+        // imagenView.setImageURI(Uri.parse(imagePath));
         imagenView.setLayoutParams(
-                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 400));
+                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 784));
         imagenView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         TextView descripcionView = new TextView(contexto);
@@ -116,10 +129,27 @@ public class Galeria extends Fragment {
     }
 
     private void agregarVideo(String videoPath, String descripcion) {
+
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        retriever.setDataSource(videoPath);
+        Bitmap bitmap = retriever.getFrameAtTime(1000000); // 1 segundo (en microsegundos)
+
+        try {
+
+            retriever.release();
+
+        } catch (Exception e) {
+
+        }
+
+        ImageView muestra = new ImageView(contexto);
+
+        muestra.setImageBitmap(bitmap);
+
         VideoView videoView = new VideoView(contexto);
         videoView.setVideoURI(Uri.parse(videoPath));
         videoView.setLayoutParams(
-                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 400));
+                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1612));
         videoView.setMediaController(new android.widget.MediaController(contexto));
         videoView.requestFocus();
 
@@ -130,9 +160,21 @@ public class Galeria extends Fragment {
         descripcionView.setPadding(0, 8, 0, 16);
 
         diseno.addView(videoView);
+
         diseno.addView(descripcionView);
 
-        // Iniciar automáticamente el video cuando sea visible (opcional)
-        videoView.setOnPreparedListener(mp -> videoView.start());
+        if (numerReproducion <= 0) {
+
+            // Iniciar automáticamente el video cuando sea visible (opcional)
+            videoView.setOnPreparedListener(mp -> videoView.start());
+        }
+
+        muestra.setOnClickListener(
+                v -> {
+                    muestra.setVisibility(View.GONE); // Oculta la miniatura
+                    videoView.start();
+                });
+
+        numerReproducion++;
     }
 }
